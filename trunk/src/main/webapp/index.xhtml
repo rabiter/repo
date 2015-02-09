@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="templates/template.xhtml">
+    <ui:define name="head">
+        <title>PrimeFaces Prototypes</title>
+    </ui:define>
+
+    <ui:define name="content">
+        <h3>The page with long polling</h3>
+        <p:socket onMessage="onMessage" channel="/username" autoConnect="false" widgetVar="subscriber"
+                  transport="long-polling"/>
+        <input type="button" value="start long polling" onclick="$.atmosphere.subscribe(PF('subscriber').cfg.request)"/><br/>
+        Max Inactive Session interval is set to 180 seconds (see com.company.MyListener@sessionCreated()).
+        You will never get com.company.MyListener#sessionDestroyed executed until stop long polling requests<br/>
+        <input type="button" value="stop long polling" onclick="$.atmosphere.unsubscribe()"/><br/>
+        After stopping long polling sessionDestroyed handler will be executed in 3 minuted (as was configured)<br/>
+        It makes me thinking that long polling requsts prolongate the session. As for me this is quite expectible - each heartbeat updates the each heartbeat updates the HttpSession#getLastAccessedTime() to current.
+        <script type="text/javascript">
+            function onMessage(mes) {
+                alert(mes);
+            }
+        </script>
+    </ui:define>
+</ui:composition>

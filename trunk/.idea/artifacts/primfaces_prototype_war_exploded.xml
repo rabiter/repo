@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="primfaces-prototype:war exploded">
+    <output-path>$PROJECT_DIR$/target/primfaces-prototype</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="primfaces-prototype/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="primfaces-prototype" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.1" />
+          <element id="library" level="project" name="Maven: org.atmosphere:atmosphere-runtime:2.2.2" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
